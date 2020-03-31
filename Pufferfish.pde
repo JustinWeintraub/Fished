@@ -15,6 +15,7 @@ class Pufferfish extends Animal {
     translate(-location.x,-location.y); 
   }
   void customBehavior(ArrayList<Animal> fishes) {  
+    //allows pufferfish to kill non pufferfish if they get close
     for (int j=animals.size()-1; j>=0; j--){
       if(abs(animals.get(j).location.x-location.x)<10){
         if(abs(animals.get(j).location.y-location.y)<10){

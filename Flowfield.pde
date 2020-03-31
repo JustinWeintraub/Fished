@@ -14,11 +14,14 @@ class FlowField {
   }
 
   void setFlow() {
-
+    //Flow field that determines movement is based off of
+    //2d random noise determined based on part of screen
     for (int row = 0; row < numrows; row++) {
       for (int col = 0; col < numcols; col++) {
         // flow[row][col] = PVector.random2D();
+        //simulates wind
         if(row*resolution<water.y)flow[row][col] = new PVector(-1, map(noise((frameCount+col)/100.0),0,1,.75,-.50));
+        //randomGaussian if in water
         else flow[row][col] = new PVector(-1, randomGaussian());
       }
     }
@@ -31,6 +34,7 @@ class FlowField {
     if (showFlow == false) return;
     for (int row = 0; row < float(numrows)/height*water.y; row++) {
       for (int col = numcols-int(random(1,100)); col >= 0; col-=int(random(1,100))) {
+        //wind is drawn in a few locations on the screen
         PVector p = flow[row][col];
         pushMatrix();
         translate(col*resolution, row*resolution);
@@ -47,6 +51,7 @@ class FlowField {
 
 
   PVector lookup(PVector position) {
+    //gets flowfield at a particular location
     int col = int(constrain(position.x/resolution, 0, numcols-1));
     int row = int(constrain(position.y/resolution, 0, numrows-1));
     return flow[row][col];

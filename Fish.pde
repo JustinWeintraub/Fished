@@ -6,6 +6,7 @@ class Fish extends Animal {
     maxForce = 1;
   }
   void display(){
+    //yellow fish
     fill(255,255,0);
     stroke(0);
     translate(location.x,location.y);
@@ -16,7 +17,8 @@ class Fish extends Animal {
     translate(-location.x,-location.y); 
   }
    void customBehavior(ArrayList<Animal> fishes) {  
-    //Neighbors
+    //Neighbors - each fish gets pulled into eachother
+    //to simulate packs
     float scale = 10.0;
     PVector total = new PVector(0, 0);
     for (Animal fish : fishes) {
@@ -29,6 +31,7 @@ class Fish extends Animal {
     }
     total.mult(-1);
     applyForce(total);
-    if(location.y<ff.water.y)location.y=ff.water.y;
+    //can't go above surface of water
+    if(location.y<ff.water.y)location.y=ff.water.y; 
   }
 }
