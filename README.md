@@ -6,4 +6,4 @@ This project was done in Processing simulating an ecosystem, specifically that o
 Using physics concepts such as acceleration and velocity, I'm able to simulate a flow field that determines the movement of the animals.
 The wind shows the flowfield of the birds while the pufferfish and fish move by the sea's random current. 
 The birds seek the fishes via a steering algorithm that's randomly triggered when they are above the fish 
-so it's never done in a straight path. 
+so it's never done in a straight path. The fish are pulled towards eachother to simulate packs.
